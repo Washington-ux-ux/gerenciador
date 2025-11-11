@@ -1,0 +1,109 @@
+body {
+    font-family: 'roboto', sans-serif;
+    background-color: #f2f2f2;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* O .container antigo foi removido para dar mais espaço, 
+   mas você pode mantê-lo se preferir */
+
+h1 {
+    font-size: 3em;
+    color: #333;
+}
+
+form {
+    margin-bottom: 30px; /* Aumentei a margem */
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    max-width: 600px; /* Limita o formulário */
+}
+
+form input {
+    flex-grow: 1; /* Faz os inputs crescerem */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+form button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Removemos o CSS da classe .formu 
+   e aplicamos o estilo de grid direto na lista de tarefas
+*/
+
+#listaTarefas {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 100%; /* Faz a lista ocupar o espaço disponível */
+    max-width: 1200px; /* Define uma largura máxima */
+
+    /* ⭐ A MÁGICA ACONTECE AQUI ⭐ */
+    display: grid;
+    /* Cria colunas automáticas:
+      - Tenta criar o máximo de colunas que puder (auto-fill)
+      - Cada coluna terá no MÍNIMO 250px
+      - E no MÁXIMO 1 fração do espaço (1fr), dividindo igualmente
+    */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px; /* Espaçamento entre os "cards" */
+}
+
+/* ESTILO DO "CARD" (O Bloco Quadrangular)
+*/
+#listaTarefas li {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px; /* Cantos arredondados */
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); /* Sombra suave */
+    
+    /* Usamos flexbox AQUI DENTRO para organizar o conteúdo do card */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Empurra o botão para baixo */
+    min-height: 150px; /* Altura mínima para o card */
+}
+
+/* Estilos para o Título, Descrição e Botão dentro do card */
+#listaTarefas li strong {
+    font-size: 1.2em;
+    color: #333;
+    display: block; /* Garante que ocupe a linha */
+    margin-bottom: 10px;
+}
+
+#listaTarefas li p {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 15px;
+    flex-grow: 1; /* Faz a descrição ocupar o espaço e empurrar o botão */
+}
+
+#listaTarefas li button {
+    background-color: #e74c3c; /* Vermelho */
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    align-self: flex-end; /* Alinha o botão à direita */
+    transition: background-color 0.2s;
+}
+
+#listaTarefas li button:hover {
+    background-color: #c0392b; /* Vermelho mais escuro */
+}
